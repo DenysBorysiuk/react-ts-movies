@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/react-ts-movies/static/css/main.08868fb7.css",
+    "main.js": "/react-ts-movies/static/js/main.16d643f8.js",
+    "static/js/293.8dfdd560.chunk.js": "/react-ts-movies/static/js/293.8dfdd560.chunk.js",
+    "static/js/83.de169aee.chunk.js": "/react-ts-movies/static/js/83.de169aee.chunk.js",
+    "static/js/385.24c6bf4c.chunk.js": "/react-ts-movies/static/js/385.24c6bf4c.chunk.js",
+    "static/js/736.2a58dcbe.chunk.js": "/react-ts-movies/static/js/736.2a58dcbe.chunk.js",
+    "static/js/387.5f26cdb1.chunk.js": "/react-ts-movies/static/js/387.5f26cdb1.chunk.js",
+    "static/js/805.811d4d58.chunk.js": "/react-ts-movies/static/js/805.811d4d58.chunk.js",
+    "static/js/787.31d56691.chunk.js": "/react-ts-movies/static/js/787.31d56691.chunk.js",
+    "static/js/526.b70a4150.chunk.js": "/react-ts-movies/static/js/526.b70a4150.chunk.js",
+    "static/js/617.cc005bc0.chunk.js": "/react-ts-movies/static/js/617.cc005bc0.chunk.js",
+    "static/js/126.42c9ce9b.chunk.js": "/react-ts-movies/static/js/126.42c9ce9b.chunk.js",
+    "index.html": "/react-ts-movies/index.html",
+    "main.08868fb7.css.map": "/react-ts-movies/static/css/main.08868fb7.css.map",
+    "main.16d643f8.js.map": "/react-ts-movies/static/js/main.16d643f8.js.map",
+    "293.8dfdd560.chunk.js.map": "/react-ts-movies/static/js/293.8dfdd560.chunk.js.map",
+    "83.de169aee.chunk.js.map": "/react-ts-movies/static/js/83.de169aee.chunk.js.map",
+    "385.24c6bf4c.chunk.js.map": "/react-ts-movies/static/js/385.24c6bf4c.chunk.js.map",
+    "736.2a58dcbe.chunk.js.map": "/react-ts-movies/static/js/736.2a58dcbe.chunk.js.map",
+    "387.5f26cdb1.chunk.js.map": "/react-ts-movies/static/js/387.5f26cdb1.chunk.js.map",
+    "805.811d4d58.chunk.js.map": "/react-ts-movies/static/js/805.811d4d58.chunk.js.map",
+    "787.31d56691.chunk.js.map": "/react-ts-movies/static/js/787.31d56691.chunk.js.map",
+    "526.b70a4150.chunk.js.map": "/react-ts-movies/static/js/526.b70a4150.chunk.js.map",
+    "617.cc005bc0.chunk.js.map": "/react-ts-movies/static/js/617.cc005bc0.chunk.js.map",
+    "126.42c9ce9b.chunk.js.map": "/react-ts-movies/static/js/126.42c9ce9b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.08868fb7.css",
+    "static/js/main.16d643f8.js"
+  ]
+}
