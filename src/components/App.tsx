@@ -9,7 +9,7 @@ const Cast = lazy(() => import('./Cast/Cast'));
 const Reviews = lazy(() => import('./Reviews/Reviews'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 
-export const App = () => {
+const App: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
@@ -25,3 +25,4 @@ export const App = () => {
   );
 };
 
+export default App;

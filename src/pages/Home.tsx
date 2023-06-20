@@ -4,7 +4,7 @@ import { MoviesList } from "../components/MoviesList/MoviesList";
 import { getTrendingMovies } from "../services/api";
 
 
-const Home = () => {
+const Home: React.FC = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {

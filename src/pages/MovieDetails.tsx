@@ -5,7 +5,7 @@ import { MovieInfo } from "../components/MovieInfo/MovieInfo";
 import { BackLink } from "../components/BackLink/BackLink";
 import toast, { Toaster } from "react-hot-toast";
 
-const MovieDetails = () => {
+const MovieDetails: React.FC = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const location = useLocation();
@@ -18,7 +18,7 @@ const MovieDetails = () => {
       try {
         const movieDetails = await getMovieDetails(movieId, signal);
         setMovie(movieDetails);
-      } catch (error) {
+      } catch (error:any) {
         if (error.name === "CanceledError") return;
         toast.error("Oops, something went wrong");
       }
