@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 // import PropTypes from 'prop-types';
 import { List, Item, Thumb } from "./MovieList.styled";
 
-export const MoviesList = ({ movies }) => {
+const MoviesList = ({ movies }) => {
   const location = useLocation();
   return (
     <List>
@@ -26,6 +26,7 @@ export const MoviesList = ({ movies }) => {
   );
 };
 
+export default MoviesList;
 // MoviesList.propTypes = {
 //   movies: PropTypes.arrayOf(
 //     PropTypes.shape({

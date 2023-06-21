@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { MoviesList } from "../components/MoviesList/MoviesList";
+import  MoviesList  from "../components/MoviesList/MoviesList";
 import { getTrendingMovies } from "../services/api";
 
 

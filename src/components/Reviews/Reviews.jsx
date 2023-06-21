@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieReviews } from "../../services/api";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { Title, Review, Nickname } from "./Reviews.styled";
 
 const Reviews = () => {
@@ -30,19 +30,16 @@ const Reviews = () => {
   }, [movieId]);
 
   return reviews?.length > 0 ? (
-    <>
-      <Toaster position="top-right" reverseOrder={false} />
-      <ul>
-        {reviews.map(({ id, author, content }) => (
-          <li key={id}>
-            <Title>
-              Author: <Nickname>{author}</Nickname>
-            </Title>
-            <Review>{content}</Review>
-          </li>
-        ))}
-      </ul>
-    </>
+    <ul>
+      {reviews.map(({ id, author, content }) => (
+        <li key={id}>
+          <Title>
+            Author: <Nickname>{author}</Nickname>
+          </Title>
+          <Review>{content}</Review>
+        </li>
+      ))}
+    </ul>
   ) : (
     <p>We don`t have reviews for this movie</p>
   );

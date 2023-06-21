@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef, Suspense } from "react";
 import { useParams, Outlet, useLocation } from "react-router-dom";
 import { getMovieDetails } from "../services/api";
-import { MovieInfo } from "../components/MovieInfo/MovieInfo";
-import { BackLink } from "../components/BackLink/BackLink";
-import toast, { Toaster } from "react-hot-toast";
+import  MovieInfo  from "../components/MovieInfo/MovieInfo";
+import  BackLink  from "../components/BackLink/BackLink";
+import toast from "react-hot-toast";
 
 const MovieDetails: React.FC = () => {
   const { movieId } = useParams();
@@ -33,7 +33,6 @@ const MovieDetails: React.FC = () => {
 
   return (
     <main>
-      <Toaster position="top-right" reverseOrder={false} />
       <BackLink to={ref.current}>Back to products</BackLink>
       {movie && <MovieInfo movie={movie} />}
       <Suspense fallback={<div>Loading...</div>}>

@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import { SearchBox } from "../components/SearchBox/SearchBox";
-import { MoviesList } from "../components/MoviesList/MoviesList";
+import  SearchBox  from "../components/SearchBox/SearchBox";
+import  MoviesList  from "../components/MoviesList/MoviesList";
 import { searchMovie } from "../services/api";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
-const Movies = () => {
+
+const Movies: React.FC = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query") ?? "";
@@ -22,7 +23,7 @@ const Movies = () => {
         }
 
         setMovies(movies.results);
-      } catch (error) {
+      } catch (error: any) {
         if (error.name === "CanceledError") return;
         toast.error("Oops, something went wrong");
       }
@@ -35,14 +36,14 @@ const Movies = () => {
     };
   }, [query]);
 
-  const updateQueryString = (query) => {
-    const nextParams = query !== "" ? { query } : {};
+  const updateQueryString = (query: string) => {
+    const nextParams: { query?: string } = query !== "" ? { query } : {};
+
     setSearchParams(nextParams);
   };
 
   return (
     <main>
-      <Toaster position="top-right" reverseOrder={false} />
       <SearchBox updateQueryString={updateQueryString} />
       <MoviesList movies={movies} />
     </main>

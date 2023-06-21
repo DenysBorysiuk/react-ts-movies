@@ -1,7 +1,7 @@
-import { Wrapper, Thumb, InfoWrapper, Link, Score } from './MovieInfo.styled';
-import PropTypes from 'prop-types';
+import { Wrapper, Thumb, InfoWrapper, Link, Score } from "./MovieInfo.styled";
+import PropTypes from "prop-types";
 
-export const MovieInfo = ({
+const MovieInfo = ({
   movie: {
     poster_path,
     original_title,
@@ -32,7 +32,7 @@ export const MovieInfo = ({
       <h3>Overview</h3>
       <p>{overview}</p>
       <h3>Genres</h3>
-      <p>{genres.map(gener => `${gener.name}, `)}</p>
+      <p>{genres.map((gener) => `${gener.name}, `)}</p>
       <h3>Additional information</h3>
       <ul>
         <li>
@@ -56,3 +56,5 @@ MovieInfo.propTypes = {
     release_date: PropTypes.string,
   }),
 };
+
+export default MovieInfo;

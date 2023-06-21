@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
-import { BsSearch } from 'react-icons/bs';
-import { FormWrap, Input, FormBtn } from './SearchBox.styled';
+import PropTypes from "prop-types";
+import { BsSearch } from "react-icons/bs";
+import { FormWrap, Input, FormBtn } from "./SearchBox.styled";
 
-export const SearchBox = ({ updateQueryString }) => {
-  const handleSubmit = e => {
+const SearchBox = ({ updateQueryString }) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.currentTarget;
     updateQueryString(form.elements.query.value);
@@ -23,3 +23,5 @@ export const SearchBox = ({ updateQueryString }) => {
 SearchBox.propTypes = {
   updateQueryString: PropTypes.func.isRequired,
 };
+
+export default SearchBox;
