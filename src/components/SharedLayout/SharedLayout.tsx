@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import { Container, Header, Link } from "./SharedLayout.styled";
 import { Toaster } from "react-hot-toast";
 
-export const SharedLayout = () => {
+export const SharedLayout: React.FC = () => {
   return (
     <Container>
       <Toaster reverseOrder={false} />
