@@ -1,8 +1,15 @@
 import { Link, useLocation } from "react-router-dom";
-// import PropTypes from 'prop-types';
 import { List, Item, Thumb } from "./MovieList.styled";
 
-const MoviesList = ({ movies }) => {
+interface IProps {
+  movies: {
+    id: number;
+    poster_path: string;
+    title: string;
+  }[];
+}
+
+const MoviesList: React.FC<IProps> = ({ movies }) => {
   const location = useLocation();
   return (
     <List>
@@ -27,12 +34,4 @@ const MoviesList = ({ movies }) => {
 };
 
 export default MoviesList;
-// MoviesList.propTypes = {
-//   movies: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//       poster_path: PropTypes.string,
-//       title: PropTypes.string,
-//     })
-//   ),
-// };
+

@@ -1,7 +1,17 @@
 import { Wrapper, Thumb, InfoWrapper, Link, Score } from "./MovieInfo.styled";
-import PropTypes from "prop-types";
 
-const MovieInfo = ({
+interface IProps {
+  movie: {
+    poster_path: string;
+    original_title: string;
+    vote_average: number;
+    overview: string;
+    genres: { id: number; name: string }[];
+    release_date: string;
+  };
+}
+
+const MovieInfo: React.FC<IProps> = ({
   movie: {
     poster_path,
     original_title,
@@ -46,15 +56,5 @@ const MovieInfo = ({
   </Wrapper>
 );
 
-MovieInfo.propTypes = {
-  movie: PropTypes.shape({
-    poster_path: PropTypes.string,
-    original_title: PropTypes.string,
-    vote_average: PropTypes.number,
-    overview: PropTypes.string,
-    genres: PropTypes.array,
-    release_date: PropTypes.string,
-  }),
-};
 
 export default MovieInfo;

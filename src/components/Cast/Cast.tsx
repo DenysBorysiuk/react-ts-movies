@@ -4,7 +4,7 @@ import { getMovieCredits } from "../../services/api";
 import { List, Item, Thumb, Wrapper, Title, SubTitle } from "./Cast.styled";
 import toast from "react-hot-toast";
 
-const Cast = () => {
+const Cast: React.FC = () => {
   const [cast, setCast] = useState<{cast_id: string, name: string, character: string, profile_path: string  }[]>([]);
   const { movieId } = useParams();
 

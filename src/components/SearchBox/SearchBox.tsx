@@ -1,9 +1,22 @@
-import PropTypes from "prop-types";
+import  { FormEvent } from 'react';
 import { BsSearch } from "react-icons/bs";
 import { FormWrap, Input, FormBtn } from "./SearchBox.styled";
 
-const SearchBox = ({ updateQueryString }) => {
-  const handleSubmit = (e) => {
+interface IProps {
+  updateQueryString: (query: string) => void;
+}
+
+interface CustomForm extends HTMLFormElement {  
+ readonly elements: CustomElements;
+}
+
+interface CustomElements extends HTMLFormControlsCollection {
+  readonly query: HTMLInputElement;
+}
+
+const SearchBox: React.FC<IProps> = ({ updateQueryString }) => {
+  const handleSubmit = (e:FormEvent<CustomForm>)=> {
+
     e.preventDefault();
     const form = e.currentTarget;
     updateQueryString(form.elements.query.value);
@@ -20,8 +33,5 @@ const SearchBox = ({ updateQueryString }) => {
   );
 };
 
-SearchBox.propTypes = {
-  updateQueryString: PropTypes.func.isRequired,
-};
 
 export default SearchBox;

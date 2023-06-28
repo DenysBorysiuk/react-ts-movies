@@ -4,8 +4,8 @@ import { getMovieReviews } from "../../services/api";
 import toast from "react-hot-toast";
 import { Title, Review, Nickname } from "./Reviews.styled";
 
-const Reviews = () => {
-  const [reviews, setReviews] = useState(null);
+const Reviews: React.FC = () => {
+  const [reviews, setReviews] = useState<{id: string, author: string, content: string  }[]>([]);
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const Reviews = () => {
       try {
         const movieReviews = await getMovieReviews(movieId, signal);
         setReviews(movieReviews.results);
-      } catch (error) {
+      } catch (error: any ) {
         if (error.name === "CanceledError") return;
         toast.error("Oops, something went wrong");
       }
