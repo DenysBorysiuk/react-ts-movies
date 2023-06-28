@@ -10,7 +10,7 @@ export const SharedLayout: React.FC = () => {
       <Header>
         <nav>
           <Link to="/">Home</Link>
-          <Link to="/movies">Movies</Link>
+          <Link to="/search">Search</Link>
         </nav>
       </Header>
       <Suspense fallback={<div>Loading...</div>}>

@@ -15,7 +15,7 @@ const MoviesList: React.FC<IProps> = ({ movies }) => {
     <List>
       {movies.map(({ id, poster_path, title }) => (
         <Item key={id}>
-          <Link to={`/movies/${id}`} state={{ from: location }}>
+          <Link to={`/movie/${id}`} state={{ from: location }}>
             <Thumb>
               <img
                 src={
@@ -34,4 +34,3 @@ const MoviesList: React.FC<IProps> = ({ movies }) => {
 };
 
 export default MoviesList;
-

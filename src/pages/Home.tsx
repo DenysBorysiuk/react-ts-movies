@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import toast, { Toaster } from "react-hot-toast";
-import  MoviesList  from "../components/MoviesList/MoviesList";
+import toast from "react-hot-toast";
+import MoviesList from "../components/MoviesList/MoviesList";
 import { getTrendingMovies } from "../services/api";
-
+import Title from "../components/Title/Title";
 
 const Home: React.FC = () => {
   const [movies, setMovies] = useState([]);
+  const [timePeriod, setTimePeriod] = useState("day");
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -13,7 +15,7 @@ const Home: React.FC = () => {
 
     const fetchData = async () => {
       try {
-        const movies = await getTrendingMovies(signal);
+        const movies = await getTrendingMovies(signal, timePeriod, page);
         setMovies(movies.results);
       } catch (error: any) {
         if (error.name === "CanceledError") return;
@@ -26,12 +28,11 @@ const Home: React.FC = () => {
     return () => {
       controller.abort();
     };
-  }, []);
+  }, [page, timePeriod]);
 
   return (
     <main>
-      <Toaster position="top-right" reverseOrder={false} />
-      <h1>Trending today</h1>
+      <Title timePeriod={timePeriod} setTimePeriod={setTimePeriod} />
       <MoviesList movies={movies} />
     </main>
   );

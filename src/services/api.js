@@ -1,14 +1,15 @@
-import axios from 'axios';
+import axios from "axios";
 
-axios.defaults.baseURL = 'https://api.themoviedb.org/3';
+axios.defaults.baseURL = "https://api.themoviedb.org/3";
 axios.defaults.params = {
-  api_key: 'b60c32a6f6f2663f6a35c755ff35b4cc',
+  api_key: "b60c32a6f6f2663f6a35c755ff35b4cc",
 };
 
-export const getTrendingMovies = async signal => {
-  const response = await axios.get(`/trending/movie/day`, {
+export const getTrendingMovies = async (signal, timePeriod, page) => {
+  const response = await axios.get(`/trending/movie/${timePeriod}`, {
     signal,
   });
+  console.log(response);
   return response.data;
 };
 
