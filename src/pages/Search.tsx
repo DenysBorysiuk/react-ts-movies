@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import  SearchBox  from "../components/SearchBox/SearchBox";
-import  MoviesList  from "../components/MoviesList/MoviesList";
+import SearchBox from "../components/SearchBox/SearchBox";
+import MoviesList from "../components/MoviesList/MoviesList";
 import { searchMovie } from "../services/api";
 import toast from "react-hot-toast";
-
+import { Pagination } from "@mui/material";
 
 const Movies: React.FC = () => {
   const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query") ?? "";
 
@@ -17,12 +19,13 @@ const Movies: React.FC = () => {
     const signal = controller.signal;
     const fetchData = async () => {
       try {
-        const movies = await searchMovie(query, signal);
+        const movies = await searchMovie(query, signal, page);
         if (!movies.total_results) {
           return toast.error("Enter correct query");
         }
 
         setMovies(movies.results);
+        setTotalPages(movies.total_pages);
       } catch (error: any) {
         if (error.name === "CanceledError") return;
         toast.error("Oops, something went wrong");
@@ -34,7 +37,7 @@ const Movies: React.FC = () => {
     return () => {
       controller.abort();
     };
-  }, [query]);
+  }, [page, query]);
 
   const updateQueryString = (query: string) => {
     const nextParams: { query?: string } = query !== "" ? { query } : {};
@@ -42,10 +45,32 @@ const Movies: React.FC = () => {
     setSearchParams(nextParams);
   };
 
+  const handlePageChange = (e: any, page: number) => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+    setPage(page);
+  };
+
   return (
     <main>
       <SearchBox updateQueryString={updateQueryString} />
       <MoviesList movies={movies} />
+      {totalPages > 1 && (
+        <Pagination
+          page={page}
+          onChange={handlePageChange}
+          count={totalPages}
+          size="large"
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "20px",
+          }}
+        />
+      )}
     </main>
   );
 };

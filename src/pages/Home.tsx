@@ -3,11 +3,13 @@ import toast from "react-hot-toast";
 import MoviesList from "../components/MoviesList/MoviesList";
 import { getTrendingMovies } from "../services/api";
 import Title from "../components/Title/Title";
+import { Pagination } from "@mui/material";
 
 const Home: React.FC = () => {
   const [movies, setMovies] = useState([]);
   const [timePeriod, setTimePeriod] = useState("day");
   const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -17,6 +19,7 @@ const Home: React.FC = () => {
       try {
         const movies = await getTrendingMovies(signal, timePeriod, page);
         setMovies(movies.results);
+        setTotalPages(movies.total_pages);
       } catch (error: any) {
         if (error.name === "CanceledError") return;
         toast.error("Oops, something went wrong");
@@ -30,10 +33,32 @@ const Home: React.FC = () => {
     };
   }, [page, timePeriod]);
 
+  const handlePageChange = (e: any, page: number) => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+    setPage(page);
+  };
+
   return (
     <main>
       <Title timePeriod={timePeriod} setTimePeriod={setTimePeriod} />
       <MoviesList movies={movies} />
+      {totalPages > 1 && (
+        <Pagination
+          page={page}
+          onChange={handlePageChange}
+          count={totalPages}
+          size="large"
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "20px",
+          }}
+        />
+      )}
     </main>
   );
 };

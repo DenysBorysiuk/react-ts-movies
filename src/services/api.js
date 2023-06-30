@@ -6,10 +6,12 @@ axios.defaults.params = {
 };
 
 export const getTrendingMovies = async (signal, timePeriod, page) => {
-  const response = await axios.get(`/trending/movie/${timePeriod}`, {
-    signal,
-  });
-  console.log(response);
+  const response = await axios.get(
+    `/trending/movie/${timePeriod}?page=${page}`,
+    {
+      signal,
+    }
+  );
   return response.data;
 };
 
@@ -20,10 +22,13 @@ export const getMovieDetails = async (movieId, signal) => {
   return response.data;
 };
 
-export const searchMovie = async (query, signal) => {
-  const response = await axios.get(`/search/movie?query=${query}`, {
-    signal,
-  });
+export const searchMovie = async (query, signal, page) => {
+  const response = await axios.get(
+    `/search/movie?query=${query}&page=${page}`,
+    {
+      signal,
+    }
+  );
   return response.data;
 };
 
