@@ -1,12 +1,16 @@
 import styled from "@emotion/styled";
 
-export const Button = styled.button`
+interface IBtn {
+  active?: boolean;
+}
+
+export const Button = styled.button<IBtn>`
   display: inline-block;
   padding: 8px 16px;
   border-radius: 4px;
   border: none;
   background-color: transparent;
-  color: black;
+  color: ${(props) => (props.active ? "orangered" : "balck")};
   font-weight: 500;
   text-transform: uppercase;
   text-decoration: underline;
