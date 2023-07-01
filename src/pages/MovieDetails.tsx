@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef, Suspense } from "react";
 import { useParams, Outlet, useLocation } from "react-router-dom";
 import { getMovieDetails } from "../services/api";
-import  MovieInfo  from "../components/MovieInfo/MovieInfo";
-import  BackLink  from "../components/BackLink/BackLink";
+import MovieInfo from "../components/MovieInfo/MovieInfo";
+import BackLink from "../components/BackLink/BackLink";
 import toast from "react-hot-toast";
+import Loader from "../components/Loader/Loader";
 
 const MovieDetails: React.FC = () => {
   const { movieId } = useParams();
@@ -18,7 +19,7 @@ const MovieDetails: React.FC = () => {
       try {
         const movieDetails = await getMovieDetails(movieId, signal);
         setMovie(movieDetails);
-      } catch (error:any) {
+      } catch (error: any) {
         if (error.name === "CanceledError") return;
         toast.error("Oops, something went wrong");
       }
@@ -35,7 +36,13 @@ const MovieDetails: React.FC = () => {
     <main>
       <BackLink to={ref.current}>Back to products</BackLink>
       {movie && <MovieInfo movie={movie} />}
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <div>
+            <Loader />
+          </div>
+        }
+      >
         <Outlet />
       </Suspense>
     </main>

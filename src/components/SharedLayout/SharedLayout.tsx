@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import { Container, Header, Link } from "./SharedLayout.styled";
 import { Toaster } from "react-hot-toast";
+import Loader from "../Loader/Loader";
 
 export const SharedLayout: React.FC = () => {
   return (
@@ -13,7 +14,13 @@ export const SharedLayout: React.FC = () => {
           <Link to="/search">Search</Link>
         </nav>
       </Header>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <div>
+            <Loader />
+          </div>
+        }
+      >
         <Outlet />
       </Suspense>
     </Container>

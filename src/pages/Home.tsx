@@ -4,16 +4,19 @@ import MoviesList from "../components/MoviesList/MoviesList";
 import { getTrendingMovies } from "../services/api";
 import Title from "../components/Title/Title";
 import { Pagination } from "@mui/material";
+import Loader from "../components/Loader/Loader";
 
 const Home: React.FC = () => {
   const [movies, setMovies] = useState([]);
   const [timePeriod, setTimePeriod] = useState("day");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
+    setIsLoading(true);
 
     const fetchData = async () => {
       try {
@@ -23,6 +26,8 @@ const Home: React.FC = () => {
       } catch (error: any) {
         if (error.name === "CanceledError") return;
         toast.error("Oops, something went wrong");
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -45,7 +50,7 @@ const Home: React.FC = () => {
   return (
     <main>
       <Title timePeriod={timePeriod} setTimePeriod={setTimePeriod} />
-      <MoviesList movies={movies} />
+      {isLoading ? <Loader /> : <MoviesList movies={movies} />}
       {totalPages > 1 && (
         <Pagination
           page={page}

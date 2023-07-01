@@ -5,6 +5,7 @@ import MoviesList from "../components/MoviesList/MoviesList";
 import { searchMovie } from "../services/api";
 import toast from "react-hot-toast";
 import { Pagination } from "@mui/material";
+import Loader from "../components/Loader/Loader";
 
 const Movies: React.FC = () => {
   const [movies, setMovies] = useState([]);
@@ -12,11 +13,14 @@ const Movies: React.FC = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query") ?? "";
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (query === "") return;
     const controller = new AbortController();
     const signal = controller.signal;
+    setIsLoading(true);
+
     const fetchData = async () => {
       try {
         const movies = await searchMovie(query, signal, page);
@@ -29,6 +33,8 @@ const Movies: React.FC = () => {
       } catch (error: any) {
         if (error.name === "CanceledError") return;
         toast.error("Oops, something went wrong");
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -57,7 +63,7 @@ const Movies: React.FC = () => {
   return (
     <main>
       <SearchBox updateQueryString={updateQueryString} />
-      <MoviesList movies={movies} />
+      {isLoading ? <Loader /> : <MoviesList movies={movies} />}
       {totalPages > 1 && (
         <Pagination
           page={page}
