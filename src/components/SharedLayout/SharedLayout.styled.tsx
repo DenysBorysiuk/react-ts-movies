@@ -19,6 +19,7 @@ export const Header = styled.header`
 
   > nav {
     display: flex;
+    gap: 12px;
   }
 `;
 
@@ -28,8 +29,15 @@ export const Link = styled(NavLink)`
   text-decoration: none;
   color: black;
   font-weight: 500;
+  transition: all 0.3s ease-in-out;
 
   &.active {
+    color: white;
+    background-color: orangered;
+  }
+
+  &:hover,
+  &:focus {
     color: white;
     background-color: orangered;
   }

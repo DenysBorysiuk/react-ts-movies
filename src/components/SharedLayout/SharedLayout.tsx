@@ -12,6 +12,7 @@ export const SharedLayout: React.FC = () => {
         <nav>
           <Link to="/">Home</Link>
           <Link to="/search">Search</Link>
+          <Link to="/favorites">Favorites</Link>
         </nav>
       </Header>
       <Suspense

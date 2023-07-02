@@ -8,6 +8,7 @@ const MovieDetails = lazy(() => import("../pages/MovieDetails"));
 const Cast = lazy(() => import("./Cast/Cast"));
 const Reviews = lazy(() => import("./Reviews/Reviews"));
 const NotFound = lazy(() => import("../pages/NotFound"));
+const Favorites = lazy(() => import("../pages/Favorites"));
 
 const App: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const App: React.FC = () => {
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/favorites" element={<Favorites />} />
         <Route path="/movie/:movieId" element={<MovieDetails />}>
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />
