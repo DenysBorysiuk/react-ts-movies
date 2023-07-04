@@ -34,7 +34,7 @@ const MovieDetails: React.FC = () => {
 
   return (
     <main>
-      <BackLink to={ref.current}>Back to products</BackLink>
+      <BackLink to={ref.current}>Back</BackLink>
       {movie && <MovieInfo movie={movie} />}
       <Suspense
         fallback={

@@ -35,12 +35,21 @@ const MovieInfo: React.FC<IProps> = ({
   const [favorites, setFavorites] = useState(
     () => JSON.parse(localStorage.getItem("favorites") as string) ?? []
   );
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
 
+  useEffect(() => {
+    const isFavorite = favorites.find((movie: any) => movie.id === id);
+    if (isFavorite) {
+      setIsFavorite(true);
+    }
+  }, [favorites, id]);
+
   const handleAddToFavorites = () => {
+    setIsFavorite(true);
     setFavorites((prev: any) => [
       ...prev,
       {
@@ -53,6 +62,11 @@ const MovieInfo: React.FC<IProps> = ({
         id,
       },
     ]);
+
+    if (isFavorite) {
+      setIsFavorite(false);
+      setFavorites((prev: any) => prev.filter((movie: any) => movie.id !== id));
+    }
   };
 
   return (
@@ -87,7 +101,9 @@ const MovieInfo: React.FC<IProps> = ({
             <Link to="reviews">Reviews</Link>
           </li>
         </ul>
-        <Button onClick={handleAddToFavorites}>add to Favorites</Button>
+        <Button onClick={handleAddToFavorites} isFavorite={isFavorite}>
+          {isFavorite ? "in favorites" : "add to favorites"}
+        </Button>
       </InfoWrapper>
     </Wrapper>
   );
