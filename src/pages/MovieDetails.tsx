@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import Loader from "../components/Loader/Loader";
 
 const MovieDetails: React.FC = () => {
-  const { movieId } = useParams();
+  const { movieId } = useParams() as { movieId: string };
   const [movie, setMovie] = useState(null);
   const location = useLocation();
   const ref = useRef(location.state?.from ?? "/");

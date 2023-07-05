@@ -1,15 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import MoviesList from "../components/MoviesList/MoviesList";
 
 const Favorites: React.FC = () => {
-  const [favorites, setFavorites] = useState([]);
-
-  useEffect(() => {
-    const favorites = localStorage.getItem("favorites");
-    if (favorites) {
-      setFavorites(JSON.parse(favorites));
-    }
-  }, [favorites]);
+  const [favorites] = useState(
+    () => JSON.parse(localStorage.getItem("favorites") as string) ?? []
+  );
 
   return (
     <div>
