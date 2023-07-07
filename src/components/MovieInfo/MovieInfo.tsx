@@ -48,7 +48,7 @@ const MovieInfo: React.FC<IProps> = ({
     }
   }, [favorites, id]);
 
-  const handleAddToFavorites = () => {
+  const handleAddToFavorites = (e: React.MouseEvent<HTMLButtonElement>) => {
     setIsFavorite(true);
     setFavorites((prev: any) => [
       ...prev,
