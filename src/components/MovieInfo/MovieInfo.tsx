@@ -104,6 +104,7 @@ const MovieInfo: React.FC<IProps> = ({
         <Button onClick={handleAddToFavorites} isFavorite={isFavorite}>
           {isFavorite ? "in favorites" : "add to favorites"}
         </Button>
+        <button>Video</button>
       </InfoWrapper>
     </Wrapper>
   );
