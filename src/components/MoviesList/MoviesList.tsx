@@ -1,15 +1,17 @@
-import { Link, useLocation } from "react-router-dom";
-import { List, Item, Thumb } from "./MovieList.styled";
+import { Link, useLocation } from 'react-router-dom';
+import { List, Item, Thumb } from './MovieList.styled';
 
-interface IProps {
-  movies: {
-    id: number;
-    poster_path: string;
-    title: string;
-  }[];
-}
+type Movie = {
+  id: number;
+  poster_path: string;
+  title: string;
+};
 
-const MoviesList: React.FC<IProps> = ({ movies }) => {
+type Props = {
+  movies: Movie[];
+};
+
+const MoviesList = ({ movies }: Props) => {
   const location = useLocation();
   return (
     <List>
