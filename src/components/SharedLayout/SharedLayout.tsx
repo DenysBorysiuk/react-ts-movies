@@ -1,10 +1,10 @@
-import { Suspense } from "react";
-import { Outlet } from "react-router-dom";
-import { Container, Header, Link } from "./SharedLayout.styled";
-import { Toaster } from "react-hot-toast";
-import Loader from "../Loader/Loader";
+import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
+import { Container, Header, Link } from './SharedLayout.styled';
+import { Toaster } from 'react-hot-toast';
+import Loader from '../Loader/Loader';
 
-export const SharedLayout: React.FC = () => {
+export const SharedLayout = () => {
   return (
     <Container>
       <Toaster reverseOrder={false} />
