@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const NotFound: React.FC = () => {
+const NotFound = () => {
   return (
     <main style={{ textAlign: 'center' }}>
       <b style={{ fontSize: 64 }}>404</b>
