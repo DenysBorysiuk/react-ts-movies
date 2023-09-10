@@ -1,10 +1,8 @@
-import { useState } from "react";
-import MoviesList from "../components/MoviesList/MoviesList";
+import { useState } from 'react';
+import MoviesList from '../components/MoviesList/MoviesList';
 
-const Favorites: React.FC = () => {
-  const [favorites] = useState(
-    () => JSON.parse(localStorage.getItem("favorites") as string) ?? []
-  );
+const Favorites = () => {
+  const [favorites] = useState(() => JSON.parse(localStorage.getItem('favorites') as string) ?? []);
 
   return (
     <div>
