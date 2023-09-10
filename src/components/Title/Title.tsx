@@ -1,25 +1,19 @@
-import { Button } from "./Title.styled";
+import { Button } from './Title.styled';
 
-interface IProps {
+type Props = {
   timePeriod: string;
   setTimePeriod: (timePeriod: string) => void;
-}
+};
 
-const Title: React.FC<IProps> = ({ timePeriod, setTimePeriod }) => {
+const Title = ({ timePeriod, setTimePeriod }: Props) => {
   return (
     <div>
       <h1>Trending movies</h1>
-      <Button
-        onClick={() => setTimePeriod("day")}
-        active={timePeriod === "day"}
-      >
+      <Button onClick={() => setTimePeriod('day')} active={timePeriod === 'day'}>
         today
       </Button>
       /
-      <Button
-        onClick={() => setTimePeriod("week")}
-        active={timePeriod === "week"}
-      >
+      <Button onClick={() => setTimePeriod('week')} active={timePeriod === 'week'}>
         week
       </Button>
     </div>
