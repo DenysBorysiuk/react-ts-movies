@@ -1,29 +1,27 @@
-import { useEffect, FC, MouseEvent } from "react";
-import { createPortal } from "react-dom";
-import { Overlay, ModalContent, CloseBtn } from "./Modal.styled";
-import { BsXLg } from "react-icons/bs";
+import { useEffect, MouseEvent } from 'react';
+import { createPortal } from 'react-dom';
+import { Overlay, ModalContent, CloseBtn } from './Modal.styled';
+import { BsXLg } from 'react-icons/bs';
 
-const modalRoot = document.querySelector("#modal-root") as
-  | HTMLElement
-  | DocumentFragment;
+const modalRoot = document.querySelector('#modal-root') as HTMLElement | DocumentFragment;
 
-interface IModal {
+type Props = {
   onClose: () => void;
   children: React.ReactNode;
-}
+};
 
-export const Modal: FC<IModal> = ({ children, onClose }) => {
+export const Modal = ({ children, onClose }: Props) => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.code === "Escape") {
+      if (event.code === 'Escape') {
         onClose();
       }
     };
 
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [onClose]);
 

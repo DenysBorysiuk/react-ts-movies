@@ -1,13 +1,12 @@
-import { HiArrowLeft } from "react-icons/hi";
-import { StyledLink } from "./BackLink.styled";
+import { HiArrowLeft } from 'react-icons/hi';
+import { StyledLink } from './BackLink.styled';
 
-interface IProps {
+type Props = {
   to: string;
   children: React.ReactNode;
-}
+};
 
-const BackLink: React.FC<IProps> = ({ to, children }) => {
-
+const BackLink = ({ to, children }: Props) => {
   return (
     <StyledLink to={to}>
       <HiArrowLeft size="24" />
@@ -16,6 +15,4 @@ const BackLink: React.FC<IProps> = ({ to, children }) => {
   );
 };
 
-
 export default BackLink;
-

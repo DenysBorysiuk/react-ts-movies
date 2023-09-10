@@ -1,11 +1,18 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { getMovieCredits } from "../../services/api";
-import { List, Item, Thumb, Wrapper, Title, SubTitle } from "./Cast.styled";
-import toast from "react-hot-toast";
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { getMovieCredits } from '../../services/api';
+import { List, Item, Thumb, Wrapper, Title, SubTitle } from './Cast.styled';
+import toast from 'react-hot-toast';
 
-const Cast: React.FC = () => {
-  const [cast, setCast] = useState<{cast_id: string, name: string, character: string, profile_path: string  }[]>([]);
+type CastType = {
+  cast_id: string;
+  name: string;
+  character: string;
+  profile_path: string;
+};
+
+const Cast = () => {
+  const [cast, setCast] = useState<Array<CastType>>([]);
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -17,8 +24,8 @@ const Cast: React.FC = () => {
         const credits = await getMovieCredits(movieId, signal);
         setCast(credits.cast);
       } catch (error: any) {
-        if (error.name === "CanceledError") return;
-        toast.error("Oops, something went wrong");
+        if (error.name === 'CanceledError') return;
+        toast.error('Oops, something went wrong');
       }
     };
 
@@ -31,7 +38,7 @@ const Cast: React.FC = () => {
 
   return cast?.length > 0 ? (
     <List>
-      {cast.map(({ cast_id , name, character, profile_path }) => (
+      {cast.map(({ cast_id, name, character, profile_path }) => (
         <Item key={cast_id}>
           <Thumb>
             <img
@@ -56,5 +63,3 @@ const Cast: React.FC = () => {
 };
 
 export default Cast;
-
-
