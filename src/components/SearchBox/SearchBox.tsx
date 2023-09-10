@@ -1,25 +1,17 @@
-import  { FormEvent } from 'react';
-import { BsSearch } from "react-icons/bs";
-import { FormWrap, Input, FormBtn } from "./SearchBox.styled";
+import { FormEvent } from 'react';
+import { BsSearch } from 'react-icons/bs';
+import { FormWrap, Input, FormBtn } from './SearchBox.styled';
 
-interface IProps {
+type Props = {
   updateQueryString: (query: string) => void;
-}
+};
 
-interface CustomForm extends HTMLFormElement {  
- readonly elements: CustomElements;
-}
+const SearchBox = ({ updateQueryString }: Props) => {
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    const form = event.currentTarget as HTMLFormElement;
 
-interface CustomElements extends HTMLFormControlsCollection {
-  readonly query: HTMLInputElement;
-}
-
-const SearchBox: React.FC<IProps> = ({ updateQueryString }) => {
-  const handleSubmit = (e:FormEvent<CustomForm>)=> {
-
-    e.preventDefault();
-    const form = e.currentTarget;
-    updateQueryString(form.elements.query.value);
+    updateQueryString(form.query.value);
     form.reset();
   };
 
@@ -32,6 +24,5 @@ const SearchBox: React.FC<IProps> = ({ updateQueryString }) => {
     </FormWrap>
   );
 };
-
 
 export default SearchBox;
