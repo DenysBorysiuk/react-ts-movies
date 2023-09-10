@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { getMovieReviews } from "../../services/api";
-import toast from "react-hot-toast";
-import { Title, Review, Nickname } from "./Reviews.styled";
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { getMovieReviews } from '../../services/api';
+import toast from 'react-hot-toast';
+import { Title, Review, Nickname } from './Reviews.styled';
 
-const Reviews: React.FC = () => {
-  const [reviews, setReviews] = useState<{id: string, author: string, content: string  }[]>([]);
+type ReviewType = { id: string; author: string; content: string };
+
+const Reviews = () => {
+  const [reviews, setReviews] = useState<ReviewType[]>([]);
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -16,9 +18,9 @@ const Reviews: React.FC = () => {
       try {
         const movieReviews = await getMovieReviews(movieId, signal);
         setReviews(movieReviews.results);
-      } catch (error: any ) {
-        if (error.name === "CanceledError") return;
-        toast.error("Oops, something went wrong");
+      } catch (error: any) {
+        if (error.name === 'CanceledError') return;
+        toast.error('Oops, something went wrong');
       }
     };
 
