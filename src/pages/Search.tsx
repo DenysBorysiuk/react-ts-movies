@@ -1,22 +1,22 @@
-import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
-import SearchBox from "../components/SearchBox/SearchBox";
-import MoviesList from "../components/MoviesList/MoviesList";
-import { searchMovie } from "../services/api";
-import toast from "react-hot-toast";
-import { Pagination } from "@mui/material";
-import Loader from "../components/Loader/Loader";
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import SearchBox from '../components/SearchBox/SearchBox';
+import MoviesList from '../components/MoviesList/MoviesList';
+import { searchMovie } from '../services/api';
+import toast from 'react-hot-toast';
+import { Pagination } from '@mui/material';
+import Loader from '../components/Loader/Loader';
 
-const Movies: React.FC = () => {
+const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get("query") ?? "";
+  const query = searchParams.get('query') ?? '';
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (query === "") return;
+    if (query === '') return;
     const controller = new AbortController();
     const signal = controller.signal;
     setIsLoading(true);
@@ -25,14 +25,14 @@ const Movies: React.FC = () => {
       try {
         const movies = await searchMovie(query, signal, page);
         if (!movies.total_results) {
-          return toast.error("Enter correct query");
+          return toast.error('Enter correct query');
         }
 
         setMovies(movies.results);
         setTotalPages(movies.total_pages);
       } catch (error: any) {
-        if (error.name === "CanceledError") return;
-        toast.error("Oops, something went wrong");
+        if (error.name === 'CanceledError') return;
+        toast.error('Oops, something went wrong');
       } finally {
         setIsLoading(false);
       }
@@ -46,7 +46,7 @@ const Movies: React.FC = () => {
   }, [page, query]);
 
   const updateQueryString = (query: string) => {
-    const nextParams: { query?: string } = query !== "" ? { query } : {};
+    const nextParams: { query?: string } = query !== '' ? { query } : {};
 
     setSearchParams(nextParams);
   };
@@ -55,7 +55,7 @@ const Movies: React.FC = () => {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
     setPage(page);
   };
@@ -71,9 +71,9 @@ const Movies: React.FC = () => {
           count={totalPages}
           size="large"
           sx={{
-            display: "flex",
-            justifyContent: "center",
-            marginBottom: "20px",
+            display: 'flex',
+            justifyContent: 'center',
+            marginBottom: '20px',
           }}
         />
       )}
