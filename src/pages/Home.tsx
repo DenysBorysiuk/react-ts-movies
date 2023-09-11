@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
-import toast from "react-hot-toast";
-import MoviesList from "../components/MoviesList/MoviesList";
-import { getTrendingMovies } from "../services/api";
-import Title from "../components/Title/Title";
-import { Pagination } from "@mui/material";
-import Loader from "../components/Loader/Loader";
+import { useState, useEffect } from 'react';
+import toast from 'react-hot-toast';
+import MoviesList from '../components/MoviesList/MoviesList';
+import { getTrendingMovies } from '../services/api';
+import Title from '../components/Title/Title';
+import { Pagination } from '@mui/material';
+import Loader from '../components/Loader/Loader';
 
-const Home: React.FC = () => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
-  const [timePeriod, setTimePeriod] = useState("day");
+  const [timePeriod, setTimePeriod] = useState('day');
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -24,8 +24,8 @@ const Home: React.FC = () => {
         setMovies(movies.results);
         setTotalPages(movies.total_pages);
       } catch (error: any) {
-        if (error.name === "CanceledError") return;
-        toast.error("Oops, something went wrong");
+        if (error.name === 'CanceledError') return;
+        toast.error('Oops, something went wrong');
       } finally {
         setIsLoading(false);
       }
@@ -42,7 +42,7 @@ const Home: React.FC = () => {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
     setPage(page);
   };
@@ -58,9 +58,9 @@ const Home: React.FC = () => {
           count={totalPages}
           size="large"
           sx={{
-            display: "flex",
-            justifyContent: "center",
-            marginBottom: "20px",
+            display: 'flex',
+            justifyContent: 'center',
+            marginBottom: '20px',
           }}
         />
       )}
