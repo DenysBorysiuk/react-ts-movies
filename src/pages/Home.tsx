@@ -6,8 +6,14 @@ import Title from '../components/Title/Title';
 import { Pagination } from '@mui/material';
 import Loader from '../components/Loader/Loader';
 
+type Movie = {
+  id: number;
+  poster_path: string;
+  title: string;
+};
+
 const Home = () => {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
   const [timePeriod, setTimePeriod] = useState('day');
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
