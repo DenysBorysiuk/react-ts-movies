@@ -26,7 +26,7 @@ const Home = () => {
 
     const fetchData = async () => {
       try {
-        const movies = await getTrendingMovies(signal, timePeriod, page);
+        const movies = await getTrendingMovies(timePeriod, page, signal);
         setMovies(movies.results);
         setTotalPages(movies.total_pages);
       } catch (error: any) {

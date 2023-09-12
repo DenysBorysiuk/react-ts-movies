@@ -23,7 +23,7 @@ const Movies = () => {
 
     const fetchData = async () => {
       try {
-        const movies = await searchMovie(query, signal, page);
+        const movies = await searchMovie(query, page, signal);
         if (!movies.total_results) {
           return toast.error('Enter correct query');
         }
