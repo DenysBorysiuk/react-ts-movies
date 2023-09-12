@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ChangeEvent } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import SearchBox from '../components/SearchBox/SearchBox';
 import MoviesList from '../components/MoviesList/MoviesList';
@@ -51,7 +51,7 @@ const Movies = () => {
     setSearchParams(nextParams);
   };
 
-  const handlePageChange = (e: any, page: number) => {
+  const handlePageChange = (event: ChangeEvent<unknown>, page: number) => {
     window.scrollTo({
       top: 0,
       left: 0,
