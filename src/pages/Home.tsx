@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ChangeEvent } from 'react';
 import toast from 'react-hot-toast';
 import MoviesList from '../components/MoviesList/MoviesList';
 import { getTrendingMovies } from '../services/api';
@@ -44,7 +44,7 @@ const Home = () => {
     };
   }, [page, timePeriod]);
 
-  const handlePageChange = (e: any, page: number) => {
+  const handlePageChange = (event: ChangeEvent<unknown>, page: number) => {
     window.scrollTo({
       top: 0,
       left: 0,
