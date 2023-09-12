@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/react-ts-movies/static/css/main.08868fb7.css",
-    "main.js": "/react-ts-movies/static/js/main.9a4b9ac6.js",
+    "main.js": "/react-ts-movies/static/js/main.32e3642c.js",
     "static/js/647.6a9c8ab0.chunk.js": "/react-ts-movies/static/js/647.6a9c8ab0.chunk.js",
     "static/js/695.718115d8.chunk.js": "/react-ts-movies/static/js/695.718115d8.chunk.js",
-    "static/js/241.ad375b43.chunk.js": "/react-ts-movies/static/js/241.ad375b43.chunk.js",
+    "static/js/241.59792e52.chunk.js": "/react-ts-movies/static/js/241.59792e52.chunk.js",
     "static/js/456.b6a35521.chunk.js": "/react-ts-movies/static/js/456.b6a35521.chunk.js",
     "static/js/848.18c2f735.chunk.js": "/react-ts-movies/static/js/848.18c2f735.chunk.js",
     "static/js/949.498e2158.chunk.js": "/react-ts-movies/static/js/949.498e2158.chunk.js",
@@ -15,10 +15,10 @@
     "static/js/126.42c9ce9b.chunk.js": "/react-ts-movies/static/js/126.42c9ce9b.chunk.js",
     "index.html": "/react-ts-movies/index.html",
     "main.08868fb7.css.map": "/react-ts-movies/static/css/main.08868fb7.css.map",
-    "main.9a4b9ac6.js.map": "/react-ts-movies/static/js/main.9a4b9ac6.js.map",
+    "main.32e3642c.js.map": "/react-ts-movies/static/js/main.32e3642c.js.map",
     "647.6a9c8ab0.chunk.js.map": "/react-ts-movies/static/js/647.6a9c8ab0.chunk.js.map",
     "695.718115d8.chunk.js.map": "/react-ts-movies/static/js/695.718115d8.chunk.js.map",
-    "241.ad375b43.chunk.js.map": "/react-ts-movies/static/js/241.ad375b43.chunk.js.map",
+    "241.59792e52.chunk.js.map": "/react-ts-movies/static/js/241.59792e52.chunk.js.map",
     "456.b6a35521.chunk.js.map": "/react-ts-movies/static/js/456.b6a35521.chunk.js.map",
     "848.18c2f735.chunk.js.map": "/react-ts-movies/static/js/848.18c2f735.chunk.js.map",
     "949.498e2158.chunk.js.map": "/react-ts-movies/static/js/949.498e2158.chunk.js.map",
@@ -30,6 +30,6 @@
   },
   "entrypoints": [
     "static/css/main.08868fb7.css",
-    "static/js/main.9a4b9ac6.js"
+    "static/js/main.32e3642c.js"
   ]
 }
