@@ -1,57 +1,44 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, MouseEvent } from 'react';
 
-import {
-  Wrapper,
-  Thumb,
-  InfoWrapper,
-  Link,
-  Score,
-  Button,
-} from "./MovieInfo.styled";
+import { Wrapper, Thumb, InfoWrapper, Link, Score, Button } from './MovieInfo.styled';
 
-interface IProps {
-  movie: {
-    poster_path: string;
-    original_title: string;
-    vote_average: number;
-    overview: string;
-    genres: { id: number; name: string }[];
-    release_date: string;
-    id: number;
-  };
-}
+type Movie = {
+  poster_path: string;
+  original_title: string;
+  vote_average: number;
+  overview: string;
+  genres: { id: number; name: string }[];
+  release_date: string;
+  id: number;
+};
 
-const MovieInfo: React.FC<IProps> = ({
-  movie: {
-    poster_path,
-    original_title,
-    vote_average,
-    overview,
-    genres,
-    release_date,
-    id,
-  },
-}) => {
-  const [favorites, setFavorites] = useState(
-    () => JSON.parse(localStorage.getItem("favorites") as string) ?? []
+type Props = {
+  movie: Movie;
+};
+
+const MovieInfo = ({
+  movie: { poster_path, original_title, vote_average, overview, genres, release_date, id },
+}: Props) => {
+  const [favorites, setFavorites] = useState<Movie[]>(
+    () => JSON.parse(localStorage.getItem('favorites') as string) ?? []
   );
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
+    localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
 
   useEffect(() => {
-    const isFavorite = favorites.find((movie: any) => movie.id === id);
+    const isFavorite = favorites.find((movie: Movie) => movie.id === id);
+
     if (isFavorite) {
       setIsFavorite(true);
     }
   }, [favorites, id]);
 
-  const handleAddToFavorites = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleAddToFavorites = (event: MouseEvent<HTMLButtonElement>) => {
     setIsFavorite(true);
-    setFavorites((prev: any) => [
-      ...prev,
+    setFavorites(prev => [
       {
         poster_path,
         original_title,
@@ -61,11 +48,12 @@ const MovieInfo: React.FC<IProps> = ({
         release_date,
         id,
       },
+      ...prev,
     ]);
 
     if (isFavorite) {
       setIsFavorite(false);
-      setFavorites((prev: any) => prev.filter((movie: any) => movie.id !== id));
+      setFavorites(prev => prev.filter((movie: Movie) => movie.id !== id));
     }
   };
 
@@ -91,7 +79,7 @@ const MovieInfo: React.FC<IProps> = ({
         <h3>Overview</h3>
         <p>{overview}</p>
         <h3>Genres</h3>
-        <p>{genres.map((gener) => `${gener.name}, `)}</p>
+        <p>{genres.map(genre => `${genre.name}, `)}</p>
         <h3>Additional information</h3>
         <ul>
           <li>
@@ -102,9 +90,8 @@ const MovieInfo: React.FC<IProps> = ({
           </li>
         </ul>
         <Button onClick={handleAddToFavorites} isFavorite={isFavorite}>
-          {isFavorite ? "in favorites" : "add to favorites"}
+          {isFavorite ? 'in favorites' : 'add to favorites'}
         </Button>
-        <button>Video</button>
       </InfoWrapper>
     </Wrapper>
   );
